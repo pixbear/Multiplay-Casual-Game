@@ -36,11 +36,11 @@ Material:
     RenderType: Opaque
   disabledShaderPasses:
   - DistortionVectors
-  - RayTracingPrepass
+  - MOTIONVECTORS
   - TransparentDepthPrepass
   - TransparentDepthPostpass
   - TransparentBackface
-  - MOTIONVECTORS
+  - RayTracingPrepass
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
