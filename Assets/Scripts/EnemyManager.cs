@@ -33,5 +33,4 @@ public class EnemyManager : MonoBehaviour
         Enemy enemy = PObjectPoolManager.Instance.Get<Enemy>("Enemy", spawnPosition);
         enemy.Set(EnemyStatus);
     }
-    
 }

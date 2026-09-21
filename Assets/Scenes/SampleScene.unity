@@ -916,15 +916,16 @@ MonoBehaviour:
   Player: {fileID: 1316898037}
   PlayerTransform: {fileID: 606600939}
   playerStatus:
-    MaxHealth: 1
-    AttackSpeed: 1
+    Damage: 4
+    MaxHealth: 3
+    AttackSpeed: 40
     MoveSpeed: 5
   bulletStatus:
     BulletSpeed: 10
     BulletDamage: 1
     PierceCount: 0
     BulletCount: 1
-    KnockbackPower: 0
+    KnockbackPower: 1
 --- !u!114 &1103891358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -938,7 +939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
   enemyStatus:
-    MaxHealth: 1
+    MaxHealth: 3
     MoveSpeed: 3
   spawnInterval: 1
 --- !u!1 &1255476469

@@ -67,5 +67,10 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Rune Shot.slnx"
+    "dotnet.defaultSolution": "Rune Shot.slnx",
+    "diffEditor.codeLens": false,
+    "references.preferredLocation": "peek",
+    "dotnet.codeLens.enableTestsCodeLens": true,
+    "dotnet.codeLens.enableReferencesCodeLens": true,
+    "editor.codeLens": true
 }
