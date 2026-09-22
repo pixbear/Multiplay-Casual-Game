@@ -11,7 +11,7 @@ public class PlayerStatus
     public float CritChance = 0.1f; // max = 1
     public float CritMultiplier = 2f; // max = 10
     public float DodgeChance = 0.1f; // max = 1
-    
+
 
     public PlayerStatus(PlayerStatus playerStatus)
     {
