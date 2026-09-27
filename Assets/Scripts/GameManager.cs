@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GameManager : PMonoSingleton<GameManager>
 {
-    public bool IsTestMode { get; private set; } = false;
-    
+    [SerializeField] bool isTestMode;
+    public bool IsTestMode => isTestMode;
+  
 }

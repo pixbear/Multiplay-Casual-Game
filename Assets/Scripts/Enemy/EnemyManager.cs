@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    [SerializeField] private bool spawnEnemy = true;
     public EnemyStatus EnemyStatus => enemyStatus;
     [SerializeField] EnemyStatus enemyStatus;
 
@@ -27,6 +28,7 @@ public class EnemyManager : MonoBehaviour
 
     private void SpawnEnemy()
     {
+        if (spawnEnemy == false) return;
         int randomPosX = Random.Range(-10, 10);
         int randomPosZ = Random.Range(-10, 10);
         Vector3 spawnPosition = new Vector3(randomPosX, 0f, randomPosZ);

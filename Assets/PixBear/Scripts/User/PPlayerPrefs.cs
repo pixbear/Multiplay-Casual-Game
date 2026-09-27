@@ -50,46 +50,46 @@ namespace PB.USER
         }
 
         #region Get and Set Methods
-        private static void Set(string key, int value)
+        protected static void Set(string key, int value)
         {
             PlayerPrefs.SetInt(key, value);
             PlayerPrefs.Save();
         }
 
-        private static void Set(string key, float value)
+        protected static void Set(string key, float value)
         {
             PlayerPrefs.SetFloat(key, value);
             PlayerPrefs.Save();
         }
 
-        private static void Set(string key, string value)
+        protected static void Set(string key, string value)
         {
             PlayerPrefs.SetString(key, value);
             PlayerPrefs.Save();
         }
 
-        private static void Set(string key, bool value)
+        protected static void Set(string key, bool value)
         {
             PlayerPrefs.SetInt(key, value ? 1 : 0);
             PlayerPrefs.Save();
         }
 
-        private static int Get(string key, int defaultValue = 0)
+        protected static int Get(string key, int defaultValue = 0)
         {
             return PlayerPrefs.GetInt(key, defaultValue);
         }
 
-        private static float Get(string key, float defaultValue = 0f)
+        protected static float Get(string key, float defaultValue = 0f)
         {
             return PlayerPrefs.GetFloat(key, defaultValue);
         }
 
-        private static string Get(string key, string defaultValue = "")
+        protected static string Get(string key, string defaultValue = "")
         {
             return PlayerPrefs.GetString(key, defaultValue);
         }
 
-        private static bool Get(string key, bool defaultValue = false)
+        protected static bool Get(string key, bool defaultValue = false)
         {
             return PlayerPrefs.GetInt(key, defaultValue ? 1 : 0) == 1;
         }

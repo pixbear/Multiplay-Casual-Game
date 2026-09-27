@@ -382,6 +382,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlllowCamera
   offset: {x: 0, y: 20, z: -10}
+  aimStrength: 2
+  maxAimOffset: 5
+  useSmooth: 0
+  smoothSpeed: 3
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -853,6 +857,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1103891354}
+  - component: {fileID: 1103891359}
   - component: {fileID: 1103891357}
   - component: {fileID: 1103891358}
   - component: {fileID: 1103891356}
@@ -920,6 +925,10 @@ MonoBehaviour:
     MaxHealth: 3
     AttackSpeed: 40
     MoveSpeed: 5
+    Defense: 0
+    CritChance: 0
+    CritMultiplier: 0
+    DodgeChance: 0
   bulletStatus:
     BulletSpeed: 10
     BulletDamage: 1
@@ -938,10 +947,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 936f8baf541d8574eadc6dbc0614b96a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
+  spawnEnemy: 0
   enemyStatus:
     MaxHealth: 3
     MoveSpeed: 3
   spawnInterval: 1
+--- !u!114 &1103891359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103891353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b45b63baac4042539925ef27dcbdd0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  isTestMode: 1
+  useAimCamera: 0
 --- !u!1 &1255476469
 GameObject:
   m_ObjectHideFlags: 0
