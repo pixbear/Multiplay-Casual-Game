@@ -26,4 +26,3 @@ public class GameManager : PMonoSingleton<GameManager>
         return spawnPos;
     }
 }
-
