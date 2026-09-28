@@ -3,12 +3,9 @@ using UnityEngine;
 
 public class GameManager : PMonoSingleton<GameManager>
 {
-<<<<<<< Updated upstream
     [SerializeField] bool isTestMode;
     public bool IsTestMode => isTestMode;
-  
-}
-=======
+
     [SerializeField] private Transform ground;
     [SerializeField] private float spawnMargin = 2f;
 
@@ -29,4 +26,4 @@ public class GameManager : PMonoSingleton<GameManager>
         return spawnPos;
     }
 }
->>>>>>> Stashed changes
+
