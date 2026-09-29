@@ -4,7 +4,7 @@ public class EnemyController : MonoBehaviour
 {    
     private Enemy enemy;
     private Rigidbody rb;
-    private Transform target = null;
+    private Transform target;
     private EnemyStatus enemyStatus => enemy.EnemyStatus;
     private Vector3 moveDirection;
 
@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
-        target = PlayerManager.Instance.PlayerTransform;
+        target = PlayerManager.Instance.Player.transform;
     }
 
     private void LateUpdate()

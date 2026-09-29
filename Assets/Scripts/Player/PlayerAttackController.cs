@@ -20,11 +20,7 @@ public class PlayerAttackController : MonoBehaviour
     {
         attackTimer += Time.deltaTime;
 
-        float attackInterval = Mathf.Lerp(
-            2f,
-            0.01f,
-            (playerStatus.AttackSpeed - 2f) / 78f
-        );
+        float attackInterval = Mathf.Lerp( 2f, 0.01f, (playerStatus.AttackSpeed - 2f) / 78f );
 
         attackInterval = Mathf.Round(attackInterval * 100f) / 100f;
 
@@ -34,6 +30,7 @@ public class PlayerAttackController : MonoBehaviour
             Fire();
         }
     }
+
     private void Fire()
     {
         Vector2 mousePosition = Mouse.current.position.ReadValue();

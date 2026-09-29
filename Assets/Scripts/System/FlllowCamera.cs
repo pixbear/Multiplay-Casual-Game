@@ -1,4 +1,3 @@
-using PB.USER;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,12 +11,11 @@ public class FlllowCamera : MonoBehaviour
     [SerializeField] private bool useSmooth = false;
     [SerializeField] private float smoothSpeed = 8f;
 
-
     private Transform target;
 
     private void Start()
     {
-        target = PlayerManager.Instance.PlayerTransform;
+        target = PlayerManager.Instance.Player.transform;
     }
 
     private void LateUpdate()
@@ -28,31 +26,18 @@ public class FlllowCamera : MonoBehaviour
 
         if (useAimCamera)
         {
-            Vector2 mouseViewportPosition =
-                Camera.main.ScreenToViewportPoint(Mouse.current.position.ReadValue());
-
-            Vector2 mouseFromCenter =
-                (mouseViewportPosition - new Vector2(0.5f, 0.5f)) * 2f;
-
-            mouseOffset = new Vector3(
-                mouseFromCenter.x * aimStrength,
-                0f,
-                mouseFromCenter.y * aimStrength
-            );
-
+            Vector2 mouseViewportPosition = Camera.main.ScreenToViewportPoint(Mouse.current.position.ReadValue());
+            Vector2 mouseFromCenter = (mouseViewportPosition - new Vector2(0.5f, 0.5f)) * 2f;
+            mouseOffset = new Vector3(mouseFromCenter.x * aimStrength, 0f, mouseFromCenter.y * aimStrength);
             mouseOffset = Vector3.ClampMagnitude(mouseOffset, maxAimOffset);
         }
 
-        // useAimCamera가 false면 mouseOffset은 (0, 0, 0)
         Vector3 desiredPosition = target.position + offset + mouseOffset;
         desiredPosition.y = target.position.y + offset.y;
 
         if (useSmooth)
         {
-            transform.position = Vector3.Lerp(
-                transform.position,
-                desiredPosition,
-                smoothSpeed * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
 
         }
         else

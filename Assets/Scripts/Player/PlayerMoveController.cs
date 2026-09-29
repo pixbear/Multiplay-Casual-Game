@@ -6,7 +6,6 @@ public class PlayerMoveController : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     private float moveSpeed => PlayerManager.Instance.PlayerStatus.MoveSpeed;
     private float rotationSpeed => moveSpeed * 2f;
-
     private Vector3 moveDirection;
 
     private void Update()

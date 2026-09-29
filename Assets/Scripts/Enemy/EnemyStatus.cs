@@ -8,6 +8,7 @@ public class EnemyStatus
     public float MaxHealth = 1f;
     public float MoveSpeed = 3f;
 
+    public EnemyStatus() { }
     public EnemyStatus(EnemyStatus status)
     {
         MaxHealth = status.MaxHealth;

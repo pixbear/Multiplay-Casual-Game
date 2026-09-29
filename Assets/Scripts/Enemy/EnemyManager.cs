@@ -10,6 +10,9 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private float spawnInterval = 5f;
     private float spawnTimer;
 
+    [ContextMenu("Set Enemy Status to Default")]
+    private void ResetEnemyStatus() => enemyStatus = new EnemyStatus();
+
     private void Start()
     {
         spawnTimer = spawnInterval;
@@ -22,16 +25,14 @@ public class EnemyManager : MonoBehaviour
         if (spawnTimer <= 0f)
         {
             SpawnEnemy();
-            spawnTimer = spawnInterval;
+            spawnTimer = Mathf.Max(0.1f, spawnInterval);
         }
     }
 
     private void SpawnEnemy()
     {
         if (spawnEnemy == false) return;
-        int randomPosX = Random.Range(-10, 10);
-        int randomPosZ = Random.Range(-10, 10);
-        Vector3 spawnPosition = new Vector3(randomPosX, 0f, randomPosZ);
+        Vector3 spawnPosition = GameManager.Instance.GetRandomSpawnPosForEnemy();
         Enemy enemy = PObjectPoolManager.Instance.Get<Enemy>("Enemy", spawnPosition);
         enemy.Set(EnemyStatus);
     }
