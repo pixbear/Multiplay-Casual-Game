@@ -6,33 +6,46 @@ public class Enemy : MonoBehaviour
 {
     public EnemyStatus EnemyStatus => enemyStatus;
     private EnemyStatus enemyStatus;
-    private Renderer enemyRenderer;
+    [SerializeField] GameObject flashEffect;
+    [SerializeField] float flashDuration = 0.2f;
+
+    private void Awake()
+    {
+
+    }
 
     public void Set(EnemyStatus enemyStatus)
     {
         this.enemyStatus = new EnemyStatus(enemyStatus);
+        Reset();
+    }
+
+    private void Reset()
+    {
+        flashEffect.SetActive(false);
     }
 
     public void GetDamage(float damage)
     {
         enemyStatus.MaxHealth -= damage;
+        StartCoroutine(FlashEffectRoutine());
+
         if (enemyStatus.MaxHealth <= 0)
         {
-            Die();
+            OnDie();
         }
-        StartCoroutine(FlashWhite());
     }
 
-    private void Die()
+    private void OnDie()
     {
-        PObjectPoolManager.Instance.Release("Enemy", this.gameObject);
+        StopAllCoroutines();
+        PObjectPoolManager.Instance.Release("Enemy", gameObject);
     }
 
-    IEnumerator FlashWhite()
+    private IEnumerator FlashEffectRoutine()
     {
-        enemyRenderer = GetComponent<Renderer>();
-        enemyRenderer.material.color = Color.white;
-        yield return new WaitForSeconds(0.1f);
-        enemyRenderer.material.color = enemyRenderer.material.color;
+        flashEffect.SetActive(true);
+        yield return new WaitForSeconds(flashDuration);
+        flashEffect.SetActive(false);
     }
 }

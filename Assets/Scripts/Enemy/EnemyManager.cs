@@ -32,7 +32,7 @@ public class EnemyManager : MonoBehaviour
     private void SpawnEnemy()
     {
         if (spawnEnemy == false) return;
-        Vector3 spawnPosition = GameManager.Instance.GetRandomSpawnPosForEnemy();
+        Vector3 spawnPosition = GameManager.Instance.GetRandomPos();
         Enemy enemy = PObjectPoolManager.Instance.Get<Enemy>("Enemy", spawnPosition);
         enemy.Set(EnemyStatus);
     }

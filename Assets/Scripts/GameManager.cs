@@ -9,7 +9,7 @@ public class GameManager : PMonoSingleton<GameManager>
     [SerializeField] private Transform ground;
     [SerializeField] private float spawnMargin = 2f;
 
-    public Vector3 GetRandomSpawnPosForEnemy()
+    public Vector3 GetRandomPos()
     {
         Vector3 size = ground.localScale;
 
