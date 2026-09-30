@@ -4,12 +4,16 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttackController : MonoBehaviour
 {
-    [SerializeField] private Transform firePoint;
-
     private PlayerStatus playerStatus => PlayerManager.Instance.PlayerStatus;
     private BulletStatus bulletStatus => PlayerManager.Instance.BulletStatus;
 
     private float attackTimer;
+    private PObjectPoolManager objectPoolManager;
+
+    private void Start()
+    {
+        objectPoolManager = PObjectPoolManager.Instance;
+    }
 
     private void Update()
     {
@@ -41,12 +45,12 @@ public class PlayerAttackController : MonoBehaviour
         {
             Vector3 mouseWorldPosition = ray.GetPoint(distance);
 
-            Vector3 fireDirection = mouseWorldPosition - firePoint.position;
+            Vector3 fireDirection = mouseWorldPosition - transform.position;
             fireDirection.y = 0f;
             fireDirection.Normalize();
 
-            Vector3 firePosition = firePoint.position + fireDirection;
-            Bullet bulletPrefab = PObjectPoolManager.Instance.Get<Bullet>("Bullet", firePosition);
+            Vector3 firePosition = transform.position + fireDirection;
+            Bullet bulletPrefab = objectPoolManager.Get<Bullet>("Bullet", firePosition);
             bulletPrefab.Set(bulletStatus);
             bulletPrefab.Shot(fireDirection);
         }

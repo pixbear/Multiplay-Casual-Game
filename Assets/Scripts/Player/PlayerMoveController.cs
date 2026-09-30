@@ -8,7 +8,7 @@ public class PlayerMoveController : MonoBehaviour
     private float rotationSpeed => moveSpeed * 2f;
     private Vector3 moveDirection;
 
-    private void Update()
+    private void FixedUpdate()
     {
         Move();
         Rotate();

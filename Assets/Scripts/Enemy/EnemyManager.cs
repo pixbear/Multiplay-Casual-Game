@@ -1,14 +1,18 @@
 using PB.MANAGER;
+using PB.SYSTEM;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class EnemyManager : PMonoSingleton<EnemyManager>
 {
     [SerializeField] private bool spawnEnemy = true;
+    [SerializeField] private float spawnInterval = 5f;
+
     public EnemyStatus EnemyStatus => enemyStatus;
     [SerializeField] EnemyStatus enemyStatus;
 
-    [SerializeField] private float spawnInterval = 5f;
     private float spawnTimer;
+    private PObjectPoolManager objectPoolManager;
+
 
     [ContextMenu("Set Enemy Status to Default")]
     private void ResetEnemyStatus() => enemyStatus = new EnemyStatus();
@@ -16,6 +20,7 @@ public class EnemyManager : MonoBehaviour
     private void Start()
     {
         spawnTimer = spawnInterval;
+        objectPoolManager = PObjectPoolManager.Instance;
     }
 
     private void Update()
@@ -33,7 +38,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (spawnEnemy == false) return;
         Vector3 spawnPosition = GameManager.Instance.GetRandomPos();
-        Enemy enemy = PObjectPoolManager.Instance.Get<Enemy>("Enemy", spawnPosition);
+        Enemy enemy = objectPoolManager.Get<Enemy>("Enemy", spawnPosition);
         enemy.Set(EnemyStatus);
     }
 }

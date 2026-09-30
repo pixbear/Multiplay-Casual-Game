@@ -5,6 +5,7 @@ namespace PB.SYSTEM
     [DefaultExecutionOrder(-1000)]
     public class PMonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
+        [SerializeField] private bool destroyOnLoad = true;
         private static T instance;
         public static T Instance
         {
@@ -34,6 +35,10 @@ namespace PB.SYSTEM
             if (instance == null)
             {
                 instance = this as T;
+                if (!destroyOnLoad)
+                {
+                    DontDestroyOnLoad(gameObject);
+                }
             }
             else
             {
