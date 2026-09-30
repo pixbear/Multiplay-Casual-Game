@@ -10,7 +10,13 @@ public class EnemyMoveController : MonoBehaviour
 
     private Transform target;
     private Vector3 moveDirection;
-    private bool isJumping = false;
+    private bool isGround = false;
+
+    [Header("Jump Settings")]
+    [SerializeField] float force = 5f;
+    [SerializeField] float jumpHeight = 5f;
+    
+
 
     private void Awake()
     {
@@ -23,18 +29,13 @@ public class EnemyMoveController : MonoBehaviour
         target = PlayerManager.Instance.Player.transform;
     }
 
-    private void OnEnable()
-    {
-        StartCoroutine(JumpRoutine());
-    }
-
     private void OnDisable()
     {
         StopAllCoroutines();
         DOTween.Kill(transform);
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         LookAtTarget();
     }
@@ -46,45 +47,41 @@ public class EnemyMoveController : MonoBehaviour
         moveDirection.y = 0;
         if (moveDirection == Vector3.zero) return;
         Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-        float speed = enemyStatus.MoveSpeed * Time.fixedDeltaTime;
-        rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, speed);
+        float speed = enemyStatus.MoveSpeed * Time.deltaTime;
+        rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, speed));
     }
 
     private IEnumerator JumpRoutine()
     {
-        if (isJumping) yield break;
-        isJumping = true;
-
-        float force = enemyStatus.MoveSpeed;
-        float interval = Mathf.Max(0.1f, 5f / force);
-        float duration = interval * 0.5f;
+        float speed = enemyStatus.MoveSpeed;
+        float interval = Mathf.Max(0.01f, 1f / speed);
 
         yield return new WaitForSeconds(interval);
-        yield return transform.DOScale(new Vector3(1.2f, 0.8f, 1.2f), duration).SetEase(Ease.OutQuad).WaitForCompletion();
+        yield return transform.DOScale(new Vector3(1.2f, 0.8f, 1.2f), 0.5f).SetEase(Ease.OutQuad).WaitForCompletion();
         yield return new WaitForSeconds(interval);
-        yield return transform.DOScale(new Vector3(0.7f, 1.3f, 0.7f), duration).SetEase(Ease.OutBack).WaitForCompletion();
         float forceX = force * moveDirection.x;
         float forceZ = force * moveDirection.z;
-        rb.linearVelocity = new Vector3(forceX, force, forceZ);
-        yield return transform.DOScale(Vector3.one, duration).SetEase(Ease.OutElastic).WaitForCompletion();
+        rb.linearVelocity = new Vector3(forceX, jumpHeight, forceZ);
+        isGround = false;
+        yield return transform.DOScale(new Vector3(0.8f, 1.2f, 0.8f), 0.3f).SetEase(Ease.OutBack).WaitForCompletion();
+        yield return transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutQuad).WaitForCompletion();
     }
 
     private IEnumerator LandRoutine()
     {
-        float force = enemyStatus.MoveSpeed;
-        float interval = Mathf.Max(0.1f, 10f / force);
-        float duration = interval * 0.2f;
+        yield return transform.DOScale(new Vector3(1.4f, 0.6f, 1.4f), 0.3f).SetEase(Ease.OutBack).WaitForCompletion();
+        yield return transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack).WaitForCompletion();
+        isGround = true;
 
-        yield return transform.DOScale(new Vector3(1.3f, 0.7f, 1.3f), duration).SetEase(Ease.OutQuad).WaitForCompletion();
-        yield return transform.DOScale(Vector3.one, duration).SetEase(Ease.OutElastic).WaitForCompletion();
-
-        isJumping = false;
-        StartCoroutine(JumpRoutine());
+        yield return StartCoroutine(JumpRoutine());
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (isGround) return;
         if (collision.gameObject.CompareTag("Ground"))
+        {
             StartCoroutine(LandRoutine());
+        }
     }
 }

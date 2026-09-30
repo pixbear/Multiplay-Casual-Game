@@ -1334,10 +1334,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
   destroyOnLoad: 1
   spawnEnemy: 1
-  spawnInterval: 1
+  spawnInterval: 5
   enemyStatus:
     MaxHealth: 10
-    MoveSpeed: 5
+    MoveSpeed: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
