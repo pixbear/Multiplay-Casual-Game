@@ -35,7 +35,7 @@ public class EnemyMoveController : MonoBehaviour
         DOTween.Kill(transform);
     }
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         LookAtTarget();
     }
@@ -47,7 +47,7 @@ public class EnemyMoveController : MonoBehaviour
         moveDirection.y = 0;
         if (moveDirection == Vector3.zero) return;
         Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-        float speed = enemyStatus.MoveSpeed * Time.deltaTime;
+        float speed = enemyStatus.MoveSpeed * Time.fixedDeltaTime;
         rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, speed));
     }
 
