@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 83639713}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1570,8 +1570,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   destroyOnLoad: 1
   isTestMode: 1
-  ground: {fileID: 83639718}
-  spawnMargin: 2
 --- !u!1 &710514279
 GameObject:
   m_ObjectHideFlags: 0
