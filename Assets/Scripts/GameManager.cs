@@ -11,13 +11,14 @@ public class GameManager : PMonoSingleton<GameManager>
 
     public Vector3 GetRandomPos()
     {
-        Vector3 size = ground.localScale;
+        float radius = ground.localScale.x / 2f;
+        radius -= spawnMargin;
 
-        float halfX = size.x / 2f - spawnMargin;
-        float halfZ = size.z / 2f - spawnMargin;
+        float randomAngle = Random.Range(0f, Mathf.PI * 2f);
+        float randomDistance = Mathf.Sqrt(Random.Range(0f, 1f)) * radius;
 
-        float randomPosX = Random.Range(-halfX, halfX);
-        float randomPosZ = Random.Range(-halfZ, halfZ);
+        float randomPosX = Mathf.Cos(randomAngle) * randomDistance;
+        float randomPosZ = Mathf.Sin(randomAngle) * randomDistance;
 
         Vector3 spawnPos = ground.position;
         spawnPos.x += randomPosX;
