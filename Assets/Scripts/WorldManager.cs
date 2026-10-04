@@ -18,11 +18,11 @@ public class WorldManager : PMonoSingleton<WorldManager>
     {
         RandomBatchPillars();
     }
-    
-    private Vector2 GetCurGroundSize()
+
+    private Vector2 GetCurWorldSize()
     {
-        var x = DEFAULT_GROUND_SIZE.x * ground.localScale.x;
-        var z = DEFAULT_GROUND_SIZE.z * ground.localScale.z;
+        var x = DEFAULT_GROUND_SIZE.x * world.localScale.x;
+        var z = DEFAULT_GROUND_SIZE.z * world.localScale.z;
         return new Vector2(x, z);
     }
 
@@ -31,9 +31,9 @@ public class WorldManager : PMonoSingleton<WorldManager>
         world.localScale = new Vector3(sizes, world.localScale.y, sizes);
     }
 
-    public Vector3 GetRandomGroundPos()
+    public Vector3 GetRandomPos()
     {
-        float radius = GetCurGroundSize().x / 2f;
+        float radius = GetCurWorldSize().x / 2f;
         radius -= spawnMargin;
 
         float randomAngle = Random.Range(0f, Mathf.PI * 2f);
@@ -50,7 +50,7 @@ public class WorldManager : PMonoSingleton<WorldManager>
         return spawnPos;
     }
 
-    [ContextMenu("Randomize Pillars")]
+    // [ContextMenu("Randomize Pillars")]
     public void RandomBatchPillars()
     {
         foreach (var pillar in pillars)
@@ -62,20 +62,20 @@ public class WorldManager : PMonoSingleton<WorldManager>
         }
     }
 
-    [SerializeField] private float hexagonRadius = 100f;
-    // 6개의 기둥을 육각형모양으로 배치하는 함수
-    [ContextMenu("Arrange Pillars In Hexagon")]
-    public void ArrangePillarsInHexagon()
-    {
-        if (pillars.Length < 6) return;
+    // [SerializeField] private float hexagonRadius = 100f;
+    // // 6개의 기둥을 육각형모양으로 배치하는 함수
+    // [ContextMenu("Arrange Pillars In Hexagon")]
+    // public void ArrangePillarsInHexagon()
+    // {
+    //     if (pillars.Length < 6) return;
 
-        for (int i = 0; i < 6; i++)
-        {
-            float angle = i * Mathf.PI / 3f; // 60도 간격
-            float x = Mathf.Cos(angle) * hexagonRadius;
-            float z = Mathf.Sin(angle) * hexagonRadius;
-            float y = -500f;
-            pillars[i].position = new Vector3(x, y, z);
-        }
-    }
+    //     for (int i = 0; i < 6; i++)
+    //     {
+    //         float angle = i * Mathf.PI / 3f; // 60도 간격
+    //         float x = Mathf.Cos(angle) * hexagonRadius;
+    //         float z = Mathf.Sin(angle) * hexagonRadius;
+    //         float y = -500f;
+    //         pillars[i].position = new Vector3(x, y, z);
+    //     }
+    // }
 }
