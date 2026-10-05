@@ -37,7 +37,7 @@ public class EnemyManager : PMonoSingleton<EnemyManager>
     private void SpawnEnemy()
     {
         if (spawnEnemy == false) return;
-        Vector3 spawnPosition = WorldManager.Instance.GetRandomPos();
+        Vector3 spawnPosition = WorldManager.Instance.GetRandomPos(10);
         Enemy enemy = objectPoolManager.Get<Enemy>("Enemy", spawnPosition);
         enemy.Set(EnemyStatus);
     }

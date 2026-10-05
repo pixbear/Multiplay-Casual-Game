@@ -1,6 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Collections;
+using PB.MANAGER;
 
 public class EnemyMoveController : MonoBehaviour
 {
@@ -29,12 +30,6 @@ public class EnemyMoveController : MonoBehaviour
         target = PlayerManager.Instance.Player.transform;
     }
 
-    private void OnDisable()
-    {
-        StopAllCoroutines();
-        DOTween.Kill(transform);
-    }
-
     private void LateUpdate()
     {
         LookAtTarget();
@@ -48,8 +43,7 @@ public class EnemyMoveController : MonoBehaviour
         if (moveDirection == Vector3.zero) return;
         Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
         float speed = enemyStatus.MoveSpeed * Time.fixedDeltaTime;
-        rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, speed * Time.fixedDeltaTime));
-        Debug.Log(Time.fixedDeltaTime);
+        rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, speed * 0.1f));
     }
 
     private IEnumerator JumpRoutine()
@@ -83,6 +77,12 @@ public class EnemyMoveController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             StartCoroutine(LandRoutine());
+            ShowLandEffect();
         }
+    }
+
+    private void ShowLandEffect()
+    {
+        PParticlePoolManager.Instance.Show("LandDust", transform.position, 2f);
     }
 }

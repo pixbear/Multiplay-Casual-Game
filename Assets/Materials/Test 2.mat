@@ -219,7 +219,7 @@ Material:
     - _ToonMaterialVersion: 0
     m_Floats:
     - _1st2nd_Shades_Feather: 0.0001
-    - _1st_ShadeColor_Feather: 0.0001
+    - _1st_ShadeColor_Feather: 0.482
     - _1st_ShadeColor_Step: 0.8
     - _2nd_ShadeColor_Feather: 0.0001
     - _2nd_ShadeColor_Step: 0.5
@@ -249,7 +249,7 @@ Material:
     - _BaseColorOverridden: 0
     - _BaseColorVisible: 1
     - _BaseColor_Step: 0.8
-    - _BaseShade_Feather: 0.0001
+    - _BaseShade_Feather: 0.482
     - _Base_Speed: 0
     - _BlurLevelMatcap: 0
     - _BlurLevelSGM: 0
@@ -413,8 +413,8 @@ Material:
     - _UVDetail: 0
     - _Unlit_Intensity: 1
     - _UseShadowThreshold: 0
-    - _Use_1stAs2nd: 0
-    - _Use_BaseAs1st: 0
+    - _Use_1stAs2nd: 1
+    - _Use_BaseAs1st: 1
     - _ZOverDrawMode: 0
     - _ZTestDepthEqualForOpaque: 4
     - _ZTestGBuffer: 4

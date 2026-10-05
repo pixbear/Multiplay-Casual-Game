@@ -1,4 +1,5 @@
 using System.Collections;
+using DG.Tweening;
 using PB.MANAGER;
 using UnityEngine;
 
@@ -18,12 +19,6 @@ public class Enemy : MonoBehaviour
     public void Set(EnemyStatus enemyStatus)
     {
         this.enemyStatus = new EnemyStatus(enemyStatus);
-        Reset();
-    }
-
-    private void Reset()
-    {
-        flashEffect.SetActive(false);
     }
 
     public void GetDamage(float damage)
@@ -35,6 +30,15 @@ public class Enemy : MonoBehaviour
         {
             OnDie();
         }
+    }
+
+    private void OnDisable()
+    {
+        // Reset
+        transform.localScale = Vector3.one;
+        flashEffect.SetActive(false);
+        StopAllCoroutines();
+        DOTween.Kill(transform);
     }
 
     private void OnDie()

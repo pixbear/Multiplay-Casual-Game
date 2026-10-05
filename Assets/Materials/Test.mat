@@ -294,7 +294,7 @@ Material:
     - _HeightCenter: 0.5
     - _HeightMapParametrization: 0
     - _HeightOffset: 0
-    - _HighColor_Power: 0.345
+    - _HighColor_Power: 0.273
     - _HighlightOverridden: 0
     - _HighlightVisible: 1
     - _InvTilingScale: 1
@@ -368,7 +368,7 @@ Material:
     - _Scroll_EmissiveV: 0
     - _SecondShadeOverridden: 0
     - _SecondShadeVisible: 1
-    - _Set_SystemShadowsToBase: 0
+    - _Set_SystemShadowsToBase: 1
     - _ShadeColor_Step: 0.5
     - _Smoothness: 0.5
     - _SmoothnessRemapMax: 1
@@ -413,8 +413,8 @@ Material:
     - _UVDetail: 0
     - _Unlit_Intensity: 1
     - _UseShadowThreshold: 0
-    - _Use_1stAs2nd: 0
-    - _Use_BaseAs1st: 0
+    - _Use_1stAs2nd: 1
+    - _Use_BaseAs1st: 1
     - _ZOverDrawMode: 0
     - _ZTestDepthEqualForOpaque: 4
     - _ZTestGBuffer: 4
@@ -429,22 +429,22 @@ Material:
     - _utsVersionY: 0
     - _utsVersionZ: 2
     m_Colors:
-    - _1st_ShadeColor: {r: 0.6691177, g: 0.6691177, b: 0.6691177, a: 1}
-    - _2nd_ShadeColor: {r: 0.375, g: 0.375, b: 0.375, a: 1}
+    - _1st_ShadeColor: {r: 0.5283019, g: 0.51064444, b: 0, a: 1}
+    - _2nd_ShadeColor: {r: 0.26415092, g: 0.23868994, b: 0, a: 1}
     - _AngelRingMaskColor: {r: 0, g: 1, b: 0, a: 1}
     - _AngelRing_Color: {r: 1, g: 1, b: 1, a: 1}
     - _Ap_RimLightColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BaseColor: {r: 0.7830189, g: 0.7572736, b: 0.4764596, a: 1}
+    - _BaseColor: {r: 0.9622642, g: 0.9151834, b: 0.44028127, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColorMaskColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.7830188, g: 0.7572736, b: 0.4764595, a: 1}
+    - _Color: {r: 0.9622641, g: 0.9151834, b: 0.44028124, a: 1}
     - _ColorShift: {r: 0, g: 0, b: 0, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
     - _Emissive_Color: {r: 0, g: 0, b: 0, a: 1}
     - _FirstShadeMaskColor: {r: 0, g: 1, b: 1, a: 1}
-    - _HighColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HighColor: {r: 1, g: 0.9148776, b: 0.15566039, a: 1}
     - _HighlightMaskColor: {r: 1, g: 1, b: 0, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
