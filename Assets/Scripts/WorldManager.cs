@@ -50,7 +50,7 @@ public class WorldManager : PMonoSingleton<WorldManager>
         return spawnPos;
     }
 
-    // [ContextMenu("Randomize Pillars")]
+    [ContextMenu("Randomize Pillars")]
     public void RandomBatchPillars()
     {
         foreach (var pillar in pillars)

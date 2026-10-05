@@ -48,7 +48,8 @@ public class EnemyMoveController : MonoBehaviour
         if (moveDirection == Vector3.zero) return;
         Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
         float speed = enemyStatus.MoveSpeed * Time.fixedDeltaTime;
-        rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, speed));
+        rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, speed * Time.fixedDeltaTime));
+        Debug.Log(Time.fixedDeltaTime);
     }
 
     private IEnumerator JumpRoutine()
