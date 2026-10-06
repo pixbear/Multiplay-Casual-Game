@@ -5,14 +5,15 @@ public class PlayerManager : PMonoSingleton<PlayerManager>
 {
     public Player Player;
 
-    [SerializeField] PlayerStatus playerStatus;
-    public PlayerStatus PlayerStatus => playerStatus;
-    [SerializeField] BulletStatus bulletStatus;
-    public BulletStatus BulletStatus => bulletStatus;
+    [Header("Test Status")]
+    [SerializeField] CharacterStatus testPlayerStatus;
+    public CharacterStatus TestPlayerStatus => testPlayerStatus;
+    [SerializeField] BulletStatus testBulletStatus;
+    public BulletStatus TestBulletStatus => testBulletStatus;
 
     [ContextMenu("Set Bullet Status to Default")]
-    private void ResetBulletStatus() => bulletStatus = new BulletStatus();
+    private void ResetBulletStatus() => testBulletStatus = new BulletStatus();
 
     [ContextMenu("Set Player Status to Default")]
-    private void ResetPlayerStatus() => playerStatus = new PlayerStatus();
+    private void ResetPlayerStatus() => testPlayerStatus = new CharacterStatus();
 }

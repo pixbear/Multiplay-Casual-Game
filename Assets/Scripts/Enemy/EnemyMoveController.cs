@@ -42,13 +42,13 @@ public class EnemyMoveController : MonoBehaviour
         moveDirection.y = 0;
         if (moveDirection == Vector3.zero) return;
         Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-        float speed = enemyStatus.MoveSpeed * Time.fixedDeltaTime;
+        float speed = enemyStatus.Speed * Time.fixedDeltaTime;
         rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, speed * 0.1f));
     }
 
     private IEnumerator JumpRoutine()
     {
-        float speed = enemyStatus.MoveSpeed;
+        float speed = enemyStatus.Speed;
         float interval = Mathf.Max(0.01f, 1f / speed);
 
         yield return new WaitForSeconds(interval);

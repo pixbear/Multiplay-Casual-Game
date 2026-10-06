@@ -1,11 +1,12 @@
 using PB.MANAGER;
+using PB.SYSTEM;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerAttackController : MonoBehaviour
 {
-    private PlayerStatus playerStatus => PlayerManager.Instance.PlayerStatus;
-    private BulletStatus bulletStatus => PlayerManager.Instance.BulletStatus;
+    private CharacterStatus playerStatus => PlayerManager.Instance.TestPlayerStatus;
+    private BulletStatus bulletStatus => PlayerManager.Instance.TestBulletStatus;
 
     private float attackTimer;
     private PObjectPoolManager objectPoolManager;
@@ -22,9 +23,10 @@ public class PlayerAttackController : MonoBehaviour
 
     private void Attack()
     {
+        PLog.Todo("Attack called");
         attackTimer += Time.deltaTime;
 
-        float attackInterval = Mathf.Lerp( 2f, 0.01f, (playerStatus.AttackSpeed - 2f) / 78f );
+        float attackInterval = Mathf.Lerp( 2f, 0.01f, (playerStatus.Attack - 2f) / 78f );
 
         attackInterval = Mathf.Round(attackInterval * 100f) / 100f;
 
