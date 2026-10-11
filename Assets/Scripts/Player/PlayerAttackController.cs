@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttackController : MonoBehaviour
 {
-    private CharacterStatus playerStatus => PlayerManager.Instance.TestPlayerStatus;
-    private BulletStatus bulletStatus => PlayerManager.Instance.TestBulletStatus;
+    private CharacterStatus playerStatus => GameManager.Instance.TestPlayerStatus;
+    private BulletStatus bulletStatus => GameManager.Instance.TestBulletStatus;
 
     private float attackTimer;
     private PObjectPoolManager objectPoolManager;
@@ -23,7 +23,6 @@ public class PlayerAttackController : MonoBehaviour
 
     private void Attack()
     {
-        PLog.Todo("Attack called");
         attackTimer += Time.deltaTime;
 
         float attackInterval = Mathf.Lerp( 2f, 0.01f, (playerStatus.Attack - 2f) / 78f );
@@ -53,8 +52,7 @@ public class PlayerAttackController : MonoBehaviour
 
             Vector3 firePosition = transform.position + fireDirection;
             Bullet bulletPrefab = objectPoolManager.Get<Bullet>("Bullet", firePosition);
-            bulletPrefab.Set(bulletStatus);
-            bulletPrefab.Shot(fireDirection);
+            bulletPrefab.Init(bulletStatus, fireDirection);
         }
     }
 }

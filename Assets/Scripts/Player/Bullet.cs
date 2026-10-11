@@ -7,15 +7,14 @@ public class Bullet : MonoBehaviour
 
     public BulletStatus BulletStatus => bulletStatus;
     private BulletStatus bulletStatus;
+    private Vector3 targetDir;
+    
 
-    public void Set(BulletStatus bulletStatus)
+    public void Init(BulletStatus status, Vector3 dir)
     {
-        this.bulletStatus = new BulletStatus(bulletStatus);
-    }
-
-    public void Shot(Vector3 direction)
-    {
-        rb.linearVelocity = direction.normalized * bulletStatus.BulletSpeed;
+        bulletStatus = new BulletStatus(status);
+        targetDir = dir;
+        rb.linearVelocity = targetDir.normalized * bulletStatus.Speed;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,11 +33,7 @@ public class Bullet : MonoBehaviour
     private void Knockback(Collider other)
     {
         Rigidbody enemyRb = other.GetComponent<Rigidbody>();
-        if (enemyRb != null)
-        {
-            Vector3 knockbackDirection = (other.transform.position - transform.position).normalized;
-            enemyRb.AddForce(knockbackDirection * bulletStatus.KnockbackPower, ForceMode.Impulse);
-        }
+            enemyRb.AddForce(targetDir * bulletStatus.KnockbackPower, ForceMode.VelocityChange);
     }
 
     private void Hit(Collider other)
@@ -46,7 +41,7 @@ public class Bullet : MonoBehaviour
         Enemy enemy = other.GetComponent<Enemy>();
         if (enemy != null)
         {
-            enemy.GetDamage(bulletStatus.BulletDamage);
+            enemy.GetDamage(bulletStatus.Damage);
             bulletStatus.PierceCount--;
             if (bulletStatus.PierceCount <= 0)
             {

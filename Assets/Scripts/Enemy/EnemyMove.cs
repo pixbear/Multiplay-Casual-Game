@@ -1,9 +1,8 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Collections;
-using PB.MANAGER;
 
-public class EnemyMoveController : MonoBehaviour
+public class EnemyMove : MonoBehaviour
 {
     private Enemy enemy;
     private Rigidbody rb;
@@ -23,11 +22,12 @@ public class EnemyMoveController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         enemy = GetComponent<Enemy>();
+        rb.sleepThreshold = 0f;
     }
 
     private void Start()
     {
-        target = PlayerManager.Instance.Player.transform;
+        target = GameManager.Instance.Player.transform;
     }
 
     private void LateUpdate()

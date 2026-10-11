@@ -2801,6 +2801,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   destroyOnLoad: 1
   isTestMode: 1
+  player: {fileID: 571511184}
+  testPlayerStatus:
+    Speed: 5
+    MaxHealth: 5
+    Attack: 5
+    Defense: 5
+  testBulletStatus:
+    Speed: 20
+    Damage: 5
+    PierceCount: 5
+    BulletCount: 1
+    KnockbackPower: 10
+    Size: 0
 --- !u!43 &633469071
 Mesh:
   m_ObjectHideFlags: 0
@@ -3218,67 +3231,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &836604607
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 836604608}
-  - component: {fileID: 836604610}
-  m_Layer: 0
-  m_Name: Manager_Player
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &836604608
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 836604607}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1705819002}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &836604610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 836604607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b25996b37e7ea644f96cd885ca9a77c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
-  destroyOnLoad: 1
-  Player: {fileID: 571511184}
-  playerStatus:
-    Damage: 4
-    MaxHealth: 3
-    AttackSpeed: 65
-    MoveSpeed: 7
-    Defense: 2
-    CritChance: 0.1
-    CritMultiplier: 2
-    DodgeChance: 0.1
-  bulletStatus:
-    BulletSpeed: 10
-    BulletDamage: 1
-    PierceCount: 0
-    BulletCount: 1
-    KnockbackPower: 0
 --- !u!1 &914490852
 GameObject:
   m_ObjectHideFlags: 0
@@ -3366,12 +3318,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 914490852}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
+  m_LocalRotation: {x: 0.5, y: -0, z: -0, w: 0.8660254}
   m_LocalPosition: {x: 0, y: 30, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1882263976}
   m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
 --- !u!114 &914490856
 MonoBehaviour:
@@ -3577,7 +3529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!64 &1027880376
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6670,6 +6622,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 9018401023361719509, guid: 6f96d46892c3c5c43bb9a6e9e7bb92ac, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9018401023361719509, guid: 6f96d46892c3c5c43bb9a6e9e7bb92ac, type: 3}
+      propertyPath: m_ImplicitCom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9018401023361719509, guid: 6f96d46892c3c5c43bb9a6e9e7bb92ac, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9018401023361719509, guid: 6f96d46892c3c5c43bb9a6e9e7bb92ac, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9018401023361719509, guid: 6f96d46892c3c5c43bb9a6e9e7bb92ac, type: 3}
+      propertyPath: m_ImplicitTensor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9018401023361719509, guid: 6f96d46892c3c5c43bb9a6e9e7bb92ac, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7729,7 +7705,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 625767540}
-  - {fileID: 836604608}
   - {fileID: 1980329500}
   - {fileID: 1970811842}
   - {fileID: 640249392}
@@ -8122,6 +8097,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 710514281}
+  - {fileID: 914490855}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1942692789
@@ -8555,11 +8531,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
   destroyOnLoad: 1
-  spawnEnemy: 0
-  spawnInterval: 1
+  spawnEnemy: 1
+  spawnInterval: 5
   enemyStatus:
-    MaxHealth: 10
-    MoveSpeed: 10
+    Speed: 5
+    MaxHealth: 55
+    Attack: 5
+    Defense: 5
 --- !u!43 &2067686478
 Mesh:
   m_ObjectHideFlags: 0
@@ -9239,7 +9217,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1882263976}
   - {fileID: 1705819002}
-  - {fileID: 914490855}
   - {fileID: 1603214324}
   - {fileID: 571511180}
   - {fileID: 752394934}

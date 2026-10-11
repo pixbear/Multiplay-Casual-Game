@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class FlllowCamera : MonoBehaviour
+public class FollowCam : MonoBehaviour
 {
     [SerializeField] private Vector3 offset = new Vector3(0f, 3f, -6f);
 
@@ -13,9 +13,9 @@ public class FlllowCamera : MonoBehaviour
 
     private Transform target;
 
-    private void Start()
+    public void SetTarget(Transform newTarget)
     {
-        target = PlayerManager.Instance.Player.transform;
+        target = newTarget;
     }
 
     private void LateUpdate()

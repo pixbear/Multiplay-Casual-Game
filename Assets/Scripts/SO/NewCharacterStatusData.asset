@@ -9,14 +9,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: CharacterStatusData
+  m_Script: {fileID: 11500000, guid: 3db6ba6699cf7489c802597a529caf4b, type: 3}
+  m_Name: NewCharacterStatusData
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStatusDataSO
   Speed:
-    value: []
-  Health:
-    value: []
+  - 10
+  - 15
+  - 20
+  - 25
+  - 30
+  MaxHealth:
+  - 100
+  - 150
+  - 200
+  - 250
+  - 300
   Attack:
-    value: []
+  - 10
+  - 15
+  - 20
+  - 25
+  - 30
   Defense:
-    value: []
+  - 5
+  - 10
+  - 15
+  - 20
+  - 25

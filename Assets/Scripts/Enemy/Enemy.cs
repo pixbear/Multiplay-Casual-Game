@@ -6,15 +6,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public EnemyStatus EnemyStatus => enemyStatus;
-    private EnemyMoveController controller;
     [SerializeField] private EnemyStatus enemyStatus;
     [SerializeField] GameObject flashEffect;
     [SerializeField] float flashDuration = 0.2f;
-
-    private void Awake()
-    {
-        controller = GetComponent<EnemyMoveController>();
-    }
 
     public void Set(EnemyStatus enemyStatus)
     {

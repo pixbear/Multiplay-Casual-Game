@@ -9,14 +9,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: EnemyStatusData
+  m_Script: {fileID: 11500000, guid: 6b4afe99a893249ecb833c2e426b0d63, type: 3}
+  m_Name: NewEnemyStatusData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatusDataSO
   Speed:
-    value: []
-  Health:
-    value: []
+  - 10
+  - 15
+  - 20
+  - 25
+  - 30
+  MaxHealth:
+  - 100
+  - 150
+  - 200
+  - 250
+  - 300
   Attack:
-    value: []
+  - 10
+  - 15
+  - 20
+  - 25
+  - 30
   Defense:
-    value: []
+  - 5
+  - 10
+  - 15
+  - 20
+  - 25
