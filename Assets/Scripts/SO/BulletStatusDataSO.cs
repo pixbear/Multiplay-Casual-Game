@@ -4,7 +4,7 @@ using UnityEngine;
 public class BulletStatusDataSO : ScriptableObject
 {
     public float[] Speed = new float[5] { 10f, 15f, 20f, 25f, 30f };
-    public float[] Damage = new float[5] { 1f, 2f, 3f, 4f, 5f };
+    public int[] Damage = new int[5] { 1, 2, 3, 4, 5 };
     public int[] PierceCount = new int[5] { 0, 1, 2, 3, 4 };
     public int[] BulletCount = new int[5] { 1, 2, 3, 4, 5 };
     public float[] KnockbackPower = new float[5] { 0f, 1f, 2f, 3f, 4f };
@@ -15,7 +15,7 @@ public class BulletStatusDataSO : ScriptableObject
 public class BulletStatus
 {
     public float Speed; // 총알 속도
-    public float Damage; // 총알 데미지
+    public int Damage; // 총알 데미지
     public int PierceCount; // 관통 수
     public int BulletCount; // 발사되는 총알 수
     public float KnockbackPower; // 밀치는  힘

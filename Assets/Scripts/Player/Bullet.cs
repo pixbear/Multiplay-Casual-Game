@@ -38,7 +38,7 @@ public class Bullet : MonoBehaviour
 
     private void Hit(Collider other)
     {
-        Enemy enemy = other.GetComponent<Enemy>();
+        EnemyBase enemy = other.GetComponent<EnemyBase>();
         if (enemy != null)
         {
             enemy.GetDamage(bulletStatus.Damage);

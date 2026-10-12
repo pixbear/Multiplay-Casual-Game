@@ -3,24 +3,33 @@ using DG.Tweening;
 using PB.MANAGER;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class EnemyBase : MonoBehaviour
 {
+    protected virtual string key => "Name";
+    private GameObject flashEffect;
+    private EnemyStatus enemyStatus;
     public EnemyStatus EnemyStatus => enemyStatus;
-    [SerializeField] private EnemyStatus enemyStatus;
-    [SerializeField] GameObject flashEffect;
-    [SerializeField] float flashDuration = 0.2f;
+    private float flashDuration = 0.1f;
+    private int curHp;
 
-    public void Set(EnemyStatus enemyStatus)
+    private void Awake()
     {
-        this.enemyStatus = new EnemyStatus(enemyStatus);
+        flashEffect = transform.GetChild(0).gameObject;
+        flashEffect.SetActive(false);
     }
 
-    public void GetDamage(float damage)
+    public void Set(EnemyStatus status)
     {
-        enemyStatus.MaxHealth -= damage;
+        enemyStatus = new EnemyStatus(status);
+        curHp = enemyStatus.MaxHealth; 
+    }
+
+    public void GetDamage(int damage)
+    {
+        curHp -= damage;
         StartCoroutine(FlashEffectRoutine());
 
-        if (enemyStatus.MaxHealth <= 0)
+        if (curHp <= 0)
         {
             OnDie();
         }
@@ -38,7 +47,8 @@ public class Enemy : MonoBehaviour
     private void OnDie()
     {
         StopAllCoroutines();
-        PObjectPoolManager.Instance.Release("Enemy", gameObject);
+        var key = string.Format("Enemy_{0}", this.key);
+        PObjectPoolManager.Instance.Release(key, gameObject);
     }
 
     private IEnumerator FlashEffectRoutine()
