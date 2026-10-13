@@ -1,9 +1,9 @@
 using PB.MANAGER;
-using PB.SYSTEM;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerAttackController : MonoBehaviour
+public class PlayerAttack : NetworkBehaviour
 {
     private CharacterStatus playerStatus => GameManager.Singleton.TestPlayerStatus;
     private BulletStatus bulletStatus => GameManager.Singleton.TestBulletStatus;
@@ -18,6 +18,7 @@ public class PlayerAttackController : MonoBehaviour
 
     private void Update()
     {
+        if (IsOwner == false) return;
         Attack();
     }
 

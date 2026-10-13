@@ -1,9 +1,11 @@
 using PB.MANAGER;
-using PB.SYSTEM;
+using Unity.Netcode;
 using UnityEngine;
 
-public class EnemyManager : PMonoSingleton<EnemyManager>
+public class EnemyManager : NetworkBehaviour
 {
+    public static EnemyManager Singleton { get; private set; }
+
     [SerializeField] private bool spawnEnemy = true;
     [SerializeField] private float spawnInterval = 5f;
 
@@ -17,6 +19,11 @@ public class EnemyManager : PMonoSingleton<EnemyManager>
     [ContextMenu("Set Enemy Status to Default")]
     private void ResetEnemyStatus() => enemyStatus = new EnemyStatus();
 
+    private void Awake()
+    {
+        Singleton = this;
+    }
+
     private void Start()
     {
         spawnTimer = spawnInterval;
@@ -25,6 +32,8 @@ public class EnemyManager : PMonoSingleton<EnemyManager>
 
     private void Update()
     {
+        if (IsServer == false) return;
+        
         spawnTimer -= Time.deltaTime;
 
         if (spawnTimer <= 0f)

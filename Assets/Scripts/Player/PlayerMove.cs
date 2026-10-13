@@ -1,7 +1,8 @@
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMoveController : MonoBehaviour
+public class PlayerMove : NetworkBehaviour
 {
     [SerializeField] private Rigidbody rb;
     private float moveSpeed => GameManager.Singleton.TestPlayerStatus.Speed;
@@ -11,17 +12,20 @@ public class PlayerMoveController : MonoBehaviour
 
     private void Update()
     {
+        if (IsOwner == false) return;
         ReadInput();
     }
 
     private void FixedUpdate()
     {
+        if (IsOwner == false) return;
         Move();
         Rotate();
     }
 
     private void LateUpdate()
     {
+        if (IsOwner == false) return;
         MoveAnimation();
     }
 

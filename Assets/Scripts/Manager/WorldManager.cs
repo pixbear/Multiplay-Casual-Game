@@ -1,7 +1,9 @@
 using UnityEngine;
-using PB.SYSTEM;
-public class WorldManager : PMonoSingleton<WorldManager>
+using Unity.Netcode;
+
+public class WorldManager : MonoBehaviour
 {
+    public static WorldManager Singleton { get; private set; }
     [SerializeField] private Transform world;
     [SerializeField] private Transform wall;
     [SerializeField] private Transform ground;
@@ -12,6 +14,11 @@ public class WorldManager : PMonoSingleton<WorldManager>
     [SerializeField] private Vector2 pillarScaleRange;
     
     private readonly Vector3 DEFAULT_GROUND_SIZE = new Vector3(50f, 50f, 50f);
+
+    private void Awake()
+    {
+        Singleton = this;
+    }
 
     private void Start()
     {
@@ -60,23 +67,4 @@ public class WorldManager : PMonoSingleton<WorldManager>
             pillar.position = new Vector3(pillar.position.x, randomHeight, pillar.position.z);
         }
     }
-
-    // [SerializeField] private float hexagonRadius = 100f;
-    // // 각도
-    // [SerializeField] private float hexagonAngleOffset = 0f;
-    // // 여러개의 기둥을 균일하게 동근랗게 배치하는 함수
-    // [ContextMenu("Arrange Pillars In Hexagon")]
-    // public void ArrangePillars()
-    // {
-    //     int pillarCount = pillarsContainer.childCount;
-    //     if (pillarCount == 0) return;
-    //     for (int i = 0; i < pillarCount; i++)
-    //     {
-    //         float angle = i * Mathf.PI * 2f / pillarCount + hexagonAngleOffset;
-    //         float x = Mathf.Cos(angle) * hexagonRadius;
-    //         float z = Mathf.Sin(angle) * hexagonRadius;
-    //         float y = -250f;
-    //         pillarsContainer.GetChild(i).position = new Vector3(x, y, z);
-    //     }
-    // }
 }

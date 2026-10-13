@@ -6,7 +6,7 @@ public class EnemyMoveBase : MonoBehaviour
     protected Rigidbody rb;
     protected EnemyStatus enemyStatus => enemy.EnemyStatus;
 
-    protected Transform target;
+    protected Transform target => enemy.Target;
     protected Vector3 targetDir;
     protected Vector3 runtimeMoveDir;
     protected float runtimeSpeed;
@@ -21,12 +21,16 @@ public class EnemyMoveBase : MonoBehaviour
 
     private void Start()
     {
-        target = GameManager.Singleton.Player.transform;
     }
 
     private void LateUpdate()
     {
         LookAtTarget();
+        UpdateRuntimeInfo();
+    }
+
+    private void UpdateRuntimeInfo()
+    {
         runtimeSpeed = rb.linearVelocity.magnitude;
         runtimeMoveDir = transform.forward;
     }

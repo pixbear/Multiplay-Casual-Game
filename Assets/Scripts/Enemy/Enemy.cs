@@ -11,6 +11,8 @@ public class EnemyBase : MonoBehaviour
     public EnemyStatus EnemyStatus => enemyStatus;
     private float flashDuration = 0.1f;
     private int curHp;
+    private Transform target = null;
+    public Transform Target => target;
 
     private void Awake()
     {
@@ -18,10 +20,16 @@ public class EnemyBase : MonoBehaviour
         flashEffect.SetActive(false);
     }
 
+    private void LateUpdate()
+    {
+        if (target != null) return;
+        FindTarget();
+    }
+
     public void Set(EnemyStatus status)
     {
         enemyStatus = new EnemyStatus(status);
-        curHp = enemyStatus.MaxHealth; 
+        curHp = enemyStatus.MaxHealth;
     }
 
     public void GetDamage(int damage)
@@ -33,6 +41,33 @@ public class EnemyBase : MonoBehaviour
         {
             OnDie();
         }
+    }
+
+    private void FindTarget()
+    {
+        GameObject[] targets = GameObject.FindGameObjectsWithTag("Player");
+        if (targets == null || targets.Length == 0)
+        {
+            target = null;
+            return;
+        }
+
+        GameObject nearestEnemy = null;
+        float closestDis = Mathf.Infinity;
+
+        foreach (GameObject target in targets)
+        {
+            Vector3 directionToEnemy = target.transform.position - transform.position;
+            float disToEnemy = directionToEnemy.sqrMagnitude;
+
+            if (disToEnemy < closestDis)
+            {
+                closestDis = disToEnemy;
+                nearestEnemy = target;
+            }
+        }
+
+        target = nearestEnemy.transform;
     }
 
     private void OnDisable()

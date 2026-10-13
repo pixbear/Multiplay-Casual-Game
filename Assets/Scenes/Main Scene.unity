@@ -1508,12 +1508,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286715470}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1882263976}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &426696267
 GameObject:
@@ -1568,6 +1568,7 @@ MonoBehaviour:
     Prefabs:
       NetworkPrefabsLists:
       - {fileID: 11400000, guid: c8b23bd10903e214c95ed1ae327bf145, type: 2}
+      - {fileID: 11400000, guid: 7dc08e02a4c6f460795f01ddaaca747a, type: 2}
     TickRate: 30
     ClientConnectionBufferTimeout: 10
     ConnectionApproval: 0
@@ -6867,6 +6868,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5391363003370880632, guid: 6f96d46892c3c5c43bb9a6e9e7bb92ac, type: 3}
+      propertyPath: m_InScenePlaced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391363003370880632, guid: 6f96d46892c3c5c43bb9a6e9e7bb92ac, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1057367873
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391363003370880632, guid: 6f96d46892c3c5c43bb9a6e9e7bb92ac, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391363003370880632, guid: 6f96d46892c3c5c43bb9a6e9e7bb92ac, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 4187730116
+      objectReference: {fileID: 0}
     - target: {fileID: 8466981793987314051, guid: 6f96d46892c3c5c43bb9a6e9e7bb92ac, type: 3}
       propertyPath: m_Name
       value: Cube
@@ -8902,6 +8919,7 @@ Transform:
   m_Children:
   - {fileID: 710514281}
   - {fileID: 914490855}
+  - {fileID: 286715473}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1942692789
@@ -8912,6 +8930,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 752394934}
     m_Modifications:
+    - target: {fileID: -1447797817577419306, guid: 3ba21482498d84a41b9c808e50572da6, type: 3}
+      propertyPath: m_InScenePlaced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1447797817577419306, guid: 3ba21482498d84a41b9c808e50572da6, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3907705173
+      objectReference: {fileID: 0}
+    - target: {fileID: -1447797817577419306, guid: 3ba21482498d84a41b9c808e50572da6, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1447797817577419306, guid: 3ba21482498d84a41b9c808e50572da6, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 1623815681
+      objectReference: {fileID: 0}
     - target: {fileID: 5022780885142838734, guid: 3ba21482498d84a41b9c808e50572da6, type: 3}
       propertyPath: m_Name
       value: Bullet
@@ -9339,9 +9373,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 936f8baf541d8574eadc6dbc0614b96a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
-  destroyOnLoad: 1
+  ShowTopMostFoldoutHeaderGroup: 1
   spawnEnemy: 1
-  spawnInterval: 33333
+  spawnInterval: 5
   enemyStatus:
     Speed: 2.5
     MaxHealth: 20
@@ -9927,7 +9961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091105b0b4e9f4cf4a3191601941ca33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WorldManager
-  destroyOnLoad: 1
   world: {fileID: 1603214324}
   wall: {fileID: 1027880381}
   ground: {fileID: 83639718}
@@ -9999,6 +10032,10 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 3787992177
       objectReference: {fileID: 0}
+    - target: {fileID: 9001592203682375872, guid: b2452a0fdeccec84ab8cad5dd6356c00, type: 3}
+      propertyPath: m_InScenePlacedDisabledByDefault
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10055,6 +10092,22 @@ PrefabInstance:
     - target: {fileID: 597784350396595447, guid: ba5add3fc17164deaafa809bdb4dccbc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2712644288826927494, guid: ba5add3fc17164deaafa809bdb4dccbc, type: 3}
+      propertyPath: m_InScenePlaced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2712644288826927494, guid: ba5add3fc17164deaafa809bdb4dccbc, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3431490146
+      objectReference: {fileID: 0}
+    - target: {fileID: 2712644288826927494, guid: ba5add3fc17164deaafa809bdb4dccbc, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2712644288826927494, guid: ba5add3fc17164deaafa809bdb4dccbc, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 1392027120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10164,4 +10217,3 @@ SceneRoots:
   - {fileID: 1002723645}
   - {fileID: 831573928}
   - {fileID: 1493223845}
-  - {fileID: 286715473}
