@@ -46,6 +46,6 @@ public class EnemyMoveCube : EnemyMoveBase
 
     private void ShowLandEffect()
     {
-        PParticlePoolManager.Instance.Show("LandDust", transform.position, 2f);
+        PParticlePoolManager.Singleton.Show("LandDust", transform.position, 2f);
     }
 }

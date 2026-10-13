@@ -20,7 +20,7 @@ public class EnemyManager : PMonoSingleton<EnemyManager>
     private void Start()
     {
         spawnTimer = spawnInterval;
-        objectPoolManager = PObjectPoolManager.Instance;
+        objectPoolManager = PObjectPoolManager.Singleton;
     }
 
     private void Update()
@@ -37,11 +37,11 @@ public class EnemyManager : PMonoSingleton<EnemyManager>
     private void SpawnEnemy()
     {
         if (spawnEnemy == false) return;
-        Vector3 spawnPosition1 = WorldManager.Instance.GetRandomPos(10);
+        Vector3 spawnPosition1 = WorldManager.Singleton.GetRandomPos(10);
         EnemyBase enemy = objectPoolManager.Get<EnemyBase>("Enemy_Cube", spawnPosition1);
         enemy.Set(EnemyStatus);
 
-        Vector3 spawnPosition2 = WorldManager.Instance.GetRandomPos(1);
+        Vector3 spawnPosition2 = WorldManager.Singleton.GetRandomPos(1);
         EnemyBase enemy2 = objectPoolManager.Get<EnemyBase>("Enemy_Sphere", spawnPosition2);
         enemy2.Set(EnemyStatus);
     }

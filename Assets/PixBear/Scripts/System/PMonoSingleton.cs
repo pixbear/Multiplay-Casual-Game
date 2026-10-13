@@ -6,35 +6,35 @@ namespace PB.SYSTEM
     public class PMonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         [SerializeField] private bool destroyOnLoad = true;
-        private static T instance;
-        public static T Instance
+        private static T singleton;
+        public static T Singleton
         {
             get
             {
-                if (instance == null)
+                if (singleton == null)
                 {
 #if UNITY_2023_2_OR_NEWER
-                    instance = FindAnyObjectByType<T>();
+                    singleton = FindAnyObjectByType<T>();
 #elif UNITY_2022_3_OR_NEWER
-                instance = FindObjectOfType<T>();
+                singleton = FindObjectOfType<T>();
 #endif
 
-                    if (instance == null)
+                    if (singleton == null)
                     {
                         GameObject obj = new GameObject(typeof(T).Name);
-                        instance = obj.AddComponent<T>();
+                        singleton = obj.AddComponent<T>();
                     }
                 }
 
-                return instance;
+                return singleton;
             }
         }
 
         protected virtual void Awake()
         {
-            if (instance == null)
+            if (singleton == null)
             {
-                instance = this as T;
+                singleton = this as T;
                 if (!destroyOnLoad)
                 {
                     DontDestroyOnLoad(gameObject);

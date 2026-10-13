@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerMoveController : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
-    private float moveSpeed => GameManager.Instance.TestPlayerStatus.Speed;
+    private float moveSpeed => GameManager.Singleton.TestPlayerStatus.Speed;
     private Vector3 moveDirection;
     private float moveAnimationTime;
 

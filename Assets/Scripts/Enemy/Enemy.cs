@@ -48,7 +48,7 @@ public class EnemyBase : MonoBehaviour
     {
         StopAllCoroutines();
         var key = string.Format("Enemy_{0}", this.key);
-        PObjectPoolManager.Instance.Release(key, gameObject);
+        PObjectPoolManager.Singleton.Release(key, gameObject);
     }
 
     private IEnumerator FlashEffectRoutine()

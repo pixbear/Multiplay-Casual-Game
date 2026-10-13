@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
         }
         else if (other.CompareTag("Wall"))
         {
-            PObjectPoolManager.Instance.Release("Bullet", this.gameObject);
+            PObjectPoolManager.Singleton.Release("Bullet", this.gameObject);
         }
     }
 
@@ -45,7 +45,7 @@ public class Bullet : MonoBehaviour
             bulletStatus.PierceCount--;
             if (bulletStatus.PierceCount <= 0)
             {
-                PObjectPoolManager.Instance.Release("Bullet", this.gameObject);
+                PObjectPoolManager.Singleton.Release("Bullet", this.gameObject);
             }
         }
     }

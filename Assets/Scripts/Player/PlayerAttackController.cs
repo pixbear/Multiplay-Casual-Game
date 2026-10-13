@@ -5,15 +5,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttackController : MonoBehaviour
 {
-    private CharacterStatus playerStatus => GameManager.Instance.TestPlayerStatus;
-    private BulletStatus bulletStatus => GameManager.Instance.TestBulletStatus;
+    private CharacterStatus playerStatus => GameManager.Singleton.TestPlayerStatus;
+    private BulletStatus bulletStatus => GameManager.Singleton.TestBulletStatus;
 
     private float attackTimer;
     private PObjectPoolManager objectPoolManager;
 
     private void Start()
     {
-        objectPoolManager = PObjectPoolManager.Instance;
+        objectPoolManager = PObjectPoolManager.Singleton;
     }
 
     private void Update()

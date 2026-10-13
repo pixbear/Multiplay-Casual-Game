@@ -51,7 +51,7 @@ namespace PB.BUTTON
         {
             if (buttonSfxKey != null && buttonSfxKey != string.Empty)
             {
-                PSoundManager.Instance.PlaySfx(buttonSfxKey);
+                PSoundManager.Singleton.PlaySfx(buttonSfxKey);
             }
         }
 

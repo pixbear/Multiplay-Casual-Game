@@ -21,7 +21,7 @@ public class EnemyMoveBase : MonoBehaviour
 
     private void Start()
     {
-        target = GameManager.Instance.Player.transform;
+        target = GameManager.Singleton.Player.transform;
     }
 
     private void LateUpdate()
